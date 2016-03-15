@@ -1,5 +1,5 @@
-name = Bootstrap Sub-Theme (LESS)
-description = Uses the Bootstrap Framework LESS source files and must be compiled (not for beginners).
+name = Gaea
+description = Un tema basado en Bootstrap realizado por Gaea para World Vision España.
 core = 7.x
 base theme = bootstrap
 
