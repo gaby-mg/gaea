@@ -1,9 +1,27 @@
-/**
- * Variable Overrides.
- *
- * Modify this file to override the Bootstrap Framework variables. You can copy
- * these variables directly from ../bootstrap/less/variables.less to this file.
- */
+//
+// Variables
+// --------------------------------------------------
 
-// Set the proper directory for the Bootstrap Glyphicon font.
-@icon-font-path: '../bootstrap/fonts/';
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+@brand-primary: #fe5000;
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-default-color:             #fff;
+@navbar-default-bg:                #fff;
+@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color:                @gray-base;
+@navbar-default-link-hover-color:          @gray-darker;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         @brand-primary;
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+
