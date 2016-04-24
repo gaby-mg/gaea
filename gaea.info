@@ -19,6 +19,14 @@ regions[footer]         = 'Footer'
 regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
 
+;;;;;;;;;;;;;;;;;;;;;
+;; Theme Settings
+;;;;;;;;;;;;;;;;;;;;;
+
+; Container
+; --------------
+settings[bootstrap_fluid_container] = 1
+
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
