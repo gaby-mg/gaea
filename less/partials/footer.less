@@ -1,4 +1,15 @@
 .footer {
+  .region-footer-text,
+  .region-certs {
+    margin-top: 35px;
+  }
+
+  .region-footer-left,
+  .region-footer-middle,
+  .region-footer-right {
+    margin-bottom: 20px;
+  }
+
   h2 {
     color: @brand-primary;
     font-size: 1em;
@@ -6,15 +17,70 @@
     text-transform: uppercase;
     border-bottom: 1px dotted;
     padding-bottom: 9px;
+    text-align: center;
+  }
+
+  .vcard,
+  p {
+    font-size: .857142em;
+    line-height: 1.6666;
+  }
+
+  p {
+    color: @brand-primary;
   }
 
   .vcard {
-    font-size: .857142em;
-    line-height: 1.6666;
-
     .fn.org {
-      text-align: center;
       color: @brand-primary;
+      text-align: center;
     }
+
+    .region,
+    .country-name {
+      .text-hide();
+    }
+
+    .glyphicon {
+      color: @brand-primary;
+      margin-right: 5px;
+    }
+  }
+}
+
+#certs {
+  padding-left: 0;
+  display: flex;
+  justify-content: space-around;
+
+  li {
+    height: 70px;
+    background-image: url(../../img/logos/logos_acreditadores.png);
+    background-repeat: no-repeat;
+  }
+
+  #certs-BDO {
+    background-position: 0 0;
+    width: 135px;
+  }
+
+  #certs-foretica {
+    background-position: -135px 0;
+    width: 146px;
+  }
+
+  #certs-lealtad {
+    background-position: -281px 0;
+    width: 133px;
+  }
+
+  #certs-one_world {
+    background-position: -414px 0;
+    width: 80px;
+  }
+
+  #certs-pacto_mundial {
+    background-position: -494px 0;
+    width: 55px;
   }
 }
