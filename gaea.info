@@ -15,7 +15,11 @@ regions[help]           = 'Help'
 regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
-regions[footer]         = 'Footer'
+regions[footer_left]    = 'Footer Left'
+regions[footer_middle]  = 'Footer Middle'
+regions[footer_right]   = 'Footer Right'
+regions[certs]          = 'Certifications'
+regions[footer_text]    = 'Footer Text'
 regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
 
@@ -23,9 +27,9 @@ regions[page_bottom]    = 'Page bottom'
 ;; Theme Settings
 ;;;;;;;;;;;;;;;;;;;;;
 
-; Container
+; Global
 ; --------------
-settings[bootstrap_fluid_container] = 1
+settings[toggle_name] = 0
 
 
 ;;;;;;;;;;;;;;;;;;;;;
