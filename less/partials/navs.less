@@ -1,11 +1,110 @@
-.navbar-nav {
+.navbar-inverse {
+  border-width: 0;
 
-  li > a {
-    text-transform: uppercase;
-
+  .navbar-toggle {
     &:hover,
-    &:focus {
-      text-decoration: underline;
+    &:focus,
+    &:active {
+      .icon-bar {
+        background-color: @brand-primary;
+      }
+    }
+  }
+}
+
+.navbar-default,
+#bs-example-navbar-collapse-1 .visible-xs
+{
+  text-transform: uppercase;
+}
+
+@media (max-width: @grid-float-breakpoint) {
+  ul.secondary {
+    background-color: @gray-lighter;
+  }
+
+  #bs-example-navbar-collapse-1 {
+    background-color: @navbar-default-bg;
+    border-color: white;
+
+    .navbar-nav {
+      margin: 0 -15px;
+
+      > li > a {
+        color: @navbar-default-link-color;
+        border-bottom: 1px solid @gray-lighter;
+
+        &:hover,
+        &:focus {
+          color: @navbar-default-link-hover-color;
+          background-color: @navbar-default-link-hover-bg;
+        }
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @navbar-default-link-active-color;
+          background-color: @navbar-default-link-active-bg;
+        }
+      }
+      > .disabled > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @navbar-default-link-disabled-color;
+          background-color: @navbar-default-link-disabled-bg;
+        }
+      }
+    }
+
+    .navbar-nav.secondary {
+      > li > a {
+        border-bottom: 1px solid white;
+      }
+    }
+
+    // Dropdown menu items
+    .navbar-nav {
+      // Remove background color from open dropdown
+      > .open > a {
+        &,
+        &:hover,
+        &:focus {
+          background-color: @navbar-default-link-active-bg;
+          color: @navbar-default-link-active-color;
+        }
+      }
+
+      @media (max-width: @grid-float-breakpoint-max) {
+        // Dropdowns get custom display when collapsed
+        .open .dropdown-menu {
+          > li > a {
+            color: @navbar-default-link-color;
+            &:hover,
+            &:focus {
+              color: @navbar-default-link-hover-color;
+              background-color: @navbar-default-link-hover-bg;
+            }
+          }
+          > .active > a {
+            &,
+            &:hover,
+            &:focus {
+              color: @navbar-default-link-active-color;
+              background-color: @navbar-default-link-active-bg;
+            }
+          }
+          > .disabled > a {
+            &,
+            &:hover,
+            &:focus {
+              color: @navbar-default-link-disabled-color;
+              background-color: @navbar-default-link-disabled-bg;
+            }
+          }
+        }
+      }
     }
   }
 }
