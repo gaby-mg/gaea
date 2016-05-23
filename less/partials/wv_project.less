@@ -1,13 +1,55 @@
 .node-type-worldvision-project {
+
   .page-header,
   h2 {
     text-align: center;
     text-transform: uppercase;
-    color: @brand-primary;
   }
 
   p {
     max-width: 33em;
     margin: 0 auto;
+  }
+
+  .media {
+    margin-bottom: 16px;
+  }
+
+  .infobox {
+    max-width: 33em;
+    margin: 0 auto;
+
+    .field-label {
+      font-family: "Gill Sans MT Bold", Helvetica, Arial, sans-serif;
+      font-weight: unset;
+    }
+  }
+}
+
+.field-name-field-child-day {
+
+  .field-items {
+    max-width: 33em;
+    margin: 0 auto;
+    font-family: Courier, monospace;
+    color: #555;
+    padding: 0 !important;
+    border: 1px solid #dedede;
+  }
+
+  .field-item {
+    border-bottom: 1px dotted #ccc;
+
+    height: auto;
+    padding: 10px;
+    text-transform: capitalize;
+
+    @media (min-width: @grid-float-breakpoint-max) {
+      text-indent: 25px;
+    }
+  }
+
+  @media (min-width: @grid-float-breakpoint-max) {
+    font-size: @font-size-large;
   }
 }
