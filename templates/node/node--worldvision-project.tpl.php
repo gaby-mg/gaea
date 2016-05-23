@@ -79,27 +79,39 @@
  * @ingroup templates
  */
 ?>
-<?php
-$capital = field_get_items('node', $node, 'field_country_capital');
-$capital_output = field_view_value( 'node', $node, 'field_country_capital', $capital[0]);
-
-$population = field_get_items('node', $node, 'field_country_population');
-$population_output = field_view_value( 'node', $node, 'field_country_population', $population[0]);
-
-$life_expectancy = field_get_items('node', $node, 'field_life_expectancy');
-$life_expectancy_output = field_view_value( 'node', $node, 'field_life_expectancy', $life_expectancy[0]);
-
-$child_mortality_rate = field_get_items('node', $node, 'field_child_mortality_rate');
-$child_mortality_rate_output = field_view_value( 'node', $node, 'field_child_mortality_rate', $child_mortality_rate[0]);
-
-$hiv_rate = field_get_items('node', $node, 'field_hiv_rate');
-$hiv_rate_output = field_view_value( 'node', $node, 'field_hiv_rate', $hiv_rate[0]);
-
-$human_development_index = field_get_items('node', $node, 'field_human_development_index');
-$human_development_index_output = field_view_value( 'node', $node, 'field_human_development_index', $human_development_index[0]);
-
-dpm($content);
-?>
+<?php if($teaser): ?>
+    <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+        <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
+            <header>
+                <?php print render($title_prefix); ?>
+                <?php if (!$page && !empty($title)): ?>
+                    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+                <?php endif; ?>
+                <?php print render($title_suffix); ?>
+                <?php if ($display_submitted): ?>
+                    <span class="submitted">
+      <?php print $user_picture; ?>
+      <?php print $submitted; ?>
+    </span>
+                <?php endif; ?>
+            </header>
+        <?php endif; ?>
+        <?php
+        // Hide comments, tags, and links now so that we can render them later.
+        hide($content['comments']);
+        hide($content['links']);
+        hide($content['field_tags']);
+        print render($content);
+        ?>
+        <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
+            <footer>
+                <?php print render($content['field_tags']); ?>
+                <?php print render($content['links']); ?>
+            </footer>
+        <?php endif; ?>
+        <?php print render($content['comments']); ?>
+    </article>
+<?php else: ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
   <header>
@@ -130,9 +142,11 @@ dpm($content);
         'field_child_mortality_rate',
         'field_hiv_rate',
         'field_human_development_index',
+        'field_coat_of_arms',
+        'field_country_location',
+        'field_nuestro_trabajo',
         'field_country_context',
         'field_child_day',
-        'field_country_wv_work',
     ];
 
     foreach ($hidden_fields as $hidden_field) {
@@ -143,48 +157,86 @@ dpm($content);
         <div class="col-md-9">
             <?php print render($content); ?>
 
-            <h2>Contexto</h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Contexto</h2>
 
-            <?php print render($content['field_country_context']); ?>
+                    <?php foreach($project->field_country_context as $country_context_item) : ?>
+                        <div class="col-md-6">
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="media-object" src="<?= file_create_url($country_context_item->field_country_context_icon->value()['uri']); ?>" alt="" width="32" height="32">
+                                </div>
+                                <div class="media-body">
+                                    <?= $country_context_item->field_country_context_text->value(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
 
-            <h2>Cómo vive un niño en <?php print $title; ?>?</h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Cómo vive un niño en <?php print $title; ?>?</h2>
 
-            <?php print render($content['field_child_day']); ?>
+                    <?php print render($content['field_child_day']); ?>
+                </div>
 
-            <h2>Nuestro trabajo</h2>
+            </div>
 
-            <?php print render($content['field_country_wv_work']); ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Nuestro trabajo</h2>
 
-        </div>
+                    <div class="row">
+                        <?php foreach($project->field_nuestro_trabajo as $country_work_item) : ?>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="<?= file_create_url($country_work_item->field_wv_work_image->value()['uri']); ?>">
+                                    <div class="caption">
+                                        <p><?= $country_work_item->field_wv_work_text->value()['value']; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .col-md-9 -->
         <div class="col-md-3">
-            <aside>
+            <aside class="infobox">
                 <table class="table">
                     <tr>
-                        <td colspan="2"><?php print render($content['field_country_flag']); ?></td>
+                        <td style='width: 50%; vertical-align: middle;'><?php print render($content['field_country_flag']); ?></td>
+                        <td><?php print render($content['field_coat_of_arms']); ?></td>
                     </tr>
                     <tr>
-                        <td>Capital</td>
-                        <td><?php print render($capital_output); ?></td>
+                        <td colspan="2"><?php print render($content['field_country_location']); ?></td>
                     </tr>
                     <tr>
-                        <td>Población</td>
-                        <td><?php print render($population_output); ?></td>
+                        <td class="field-label">Capital</td>
+                        <td><?= $capital; ?></td>
                     </tr>
                     <tr>
-                        <td>Esperanza de vida</td>
-                        <td><?php print render($life_expectancy_output); ?></td>
+                        <td class="field-label">Población</td>
+                        <td><?= $population; ?></td>
                     </tr>
                     <tr>
-                        <td>Tasa de mortalidad infantil</td>
-                        <td><?php print render($child_mortality_rate_output); ?></td>
+                        <td class="field-label">Esperanza de vida</td>
+                        <td><?= $life_expectancy; ?></td>
                     </tr>
                     <tr>
-                        <td>Tasa VIH</td>
-                        <td><?php print render($hiv_rate_output); ?></td>
+                        <td class="field-label">Tasa de mortalidad infantil</td>
+                        <td><?php print render($child_mortality_rate); ?></td>
                     </tr>
                     <tr>
-                        <td>Índice de desarrollo humano</td>
-                        <td><?php print render($human_development_index_output); ?></td>
+                        <td class="field-label">Tasa VIH</td>
+                        <td><?php print render($hiv_rate); ?></td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Índice de desarrollo humano</td>
+                        <td><?php print render($human_development_index); ?></td>
                     </tr>
                 </table>
             </aside>
@@ -198,4 +250,4 @@ dpm($content);
   </footer>
   <?php endif; ?>
 </article>
-
+<?php endif; ?>
