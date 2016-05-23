@@ -1,6 +1,9 @@
 // Bootstrap library.
 @import 'bootstrap';
 
+// Fonts
+@import 'partials/fonts';
+
 // Base-theme overrides.
 @import 'overrides';
 
@@ -10,4 +13,94 @@
 // Partials
 @import 'partials/footer';
 @import 'partials/navs';
+@import 'partials/comments';
 @import 'partials/wv_project';
+@import 'partials/wv_child';
+
+b,
+strong,
+em {
+  color: @brand-primary;
+}
+
+p {
+
+  &.lead {
+    max-width: 33em;
+    margin: 0 auto;
+  }
+}
+
+b,
+strong {
+  font-family: "Gill Sans MT Bold", Helvetica, Arial, sans-serif;
+}
+
+
+.thumbnail-post {
+  background-color: @gray-lighter;
+
+  @media (min-width: @grid-float-breakpoint-max) {
+    min-height: 580px;
+  }
+}
+
+.post-title {
+  text-align: center;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid black;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 29px solid transparent;
+  border-right: 29px solid transparent;
+
+  border-top: 29px solid #fff;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+
+  border-left: 60px solid green;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+
+  border-right:10px solid blue;
+}
+
+.banner {
+  margin-bottom: 30px;
+
+  &.banner-primary {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) repeat scroll 0% 0%, transparent url("../img/banners/CS_main_hpl_Lee_Ap_720x650.jpg") no-repeat scroll center center / cover;
+    h2 {
+      text-align: center;
+    }
+
+    @media (min-width: @grid-float-breakpoint-max) {
+      min-height: 670px;
+    }
+  }
+
+  &.banner-secondary {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) repeat scroll 0% 0%, transparent url("../img/banners/CS_main_hpl_Lee_Ap_720x650.jpg") no-repeat scroll center center / cover;
+    min-height: 320px;
+  }
+}
