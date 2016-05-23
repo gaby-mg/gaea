@@ -31,6 +31,10 @@ regions[page_bottom]    = 'Page bottom'
 ; --------------
 settings[toggle_name] = 0
 
+; Navbar
+; --------------
+settings[bootstrap_main_menu_navbar_position] = 'normal'
+settings[bootstrap_main_menu_navbar_inverse] = 0
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
