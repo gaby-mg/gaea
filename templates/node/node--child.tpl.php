@@ -122,8 +122,8 @@
     <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
         <header>
             <?php print render($title_prefix); ?>
-            <?php if (!$page && !empty($title)): ?>
-                <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+            <?php if ($page && !empty($title)): ?>
+                <h2<?php print $title_attributes; ?>>Apadrina un niño ahora y cambia su vida para siempre</h2>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
             <?php if ($display_submitted): ?>
@@ -233,20 +233,57 @@
     <div class="row">
         <div class="col-xs-12">
             <h2>Cambia mi mundo</h2>
-            <?php print render($content['field_change_my_world']); ?>
+
+            <div class="row">
+                <?php foreach ($child->field_change_my_world as $change_my_world_item): ?>
+                <div class="col-xs-12 col-sm-4">
+                    <img class="img-responsive" src="<?= file_create_url($change_my_world_item->field_image->value()['uri']); ?>" alt="">
+                    <p class="text-danger"><?= $change_my_world_item->field_problema->value(); ?></p>
+                    <p class="text-success"><?= $change_my_world_item->field_solucion->value(); ?></p>
+                </div>
+                <?php endforeach; ?>
+            </div>
 
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $title; ?> ahora</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="child-video-container">
+                <div class="arrow-down hidden-xs"></div>
+                <video class="child-video hidden-xs" width="100%">
+                    <source src="<?= file_create_url($child->field_featured_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
+                    <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
+                    <!-- fallback to Flash: -->
+                    <object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
+                        <!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
+                        <param name="movie" value="__FLASH__.SWF" />
+                        <param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
+                        <!-- fallback image. note the title field below, put the title of the video there -->
+                        <img src="__VIDEO__.JPG" width="640" height="360" alt="__TITLE__"
+                             title="No video playback capabilities, please download the video below" />
+                    </object>
+                </video>
+                <div class="video-overlay-bg"></div>
+                <div class="video-overlay">
+                    <img class="play" src="http://cdn.worldvision.org.uk/1461857065/themes/world_vision_reponsive/img/sponsor-video-play.png" alt="play video">
+                    <span>Watch his video</span>
+                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $title; ?> ahora</a></p>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Share My Journey -->
     <div class="row">
         <div class="col-xs-12">
-            <h2>Comparte mi camino</h2>
-            <div class="child-thumbnail">
+            <h2>Qué recibes cuando apadrinas?</h2>
 
-            </div>
-            <div class="row"></div>
+            <p class="lead text-center">Si apadrinas a <?= $title ?> hoy cambiarás su vida mientras eres testigo del cambio. Gracias a las fotos y las cartas le verás crecer y serás una pieza clave en su vida. Además, a través de sus ojos verás cómo cambia su familia y su comunidad.</p>
+            <p class="lead text-center">Lo primero que recibirás será una carpeta con más información sobre <?= $title ?> – su foto, información básica sobre su familia y su comunidad – y unas semanas más tarde recibirás su primera carta desde <?= $child_country ?>.</p>
+            <p class="lead text-center">Siempre que escribas a <?= $title ?> recibirás una carta como respuesta. De esta forma podrás mantener con tu niño apadrinado una estrecha relación y le conocerás cada vez un poco más.</p>
+            <p class="lead text-center">Todos los padrinos reciben informes periódicos sobre la evolución de los proyectos, sobre cómo estamos invirtiendo las donaciones en la infancia y cómo va cambiando la situación de cada niño y su comunidad. Además tienes la oportunidad de visitarle en una experiencia mágica y única en tu vida en la que conocerás de primera mano su mundo y su comunidad.</p>
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $title; ?> ahora</a></p>
         </div>
     </div>
