@@ -40,6 +40,7 @@ settings[bootstrap_main_menu_navbar_inverse] = 0
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
+stylesheets[all][] = vendor/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css
 stylesheets[all][] = less/style.less
 
 
@@ -59,6 +60,8 @@ scripts[] = 'bootstrap/js/popover.js'
 scripts[] = 'bootstrap/js/scrollspy.js'
 scripts[] = 'bootstrap/js/tab.js'
 scripts[] = 'bootstrap/js/transition.js'
+scripts[] = 'vendor/smartmenus/jquery.smartmenus.js'
+scripts[] = 'vendor/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js'
 
 ; Disable BootstrapCDN so the compiled LESS source files can be used.
 settings[bootstrap_cdn] = ''
