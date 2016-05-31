@@ -111,10 +111,6 @@
     <nav class="<?php print $main_menu_navbar_classes; ?> hidden-xs">
       <div class="<?php print $container_class; ?>">
         <div class="collapse navbar-collapse">
-          <?php if (!empty($primary_nav)): ?>
-            <?php print render($primary_nav); ?>
-          <?php endif; ?>
-
           <?php if (!empty($page['navigation'])): ?>
             <?php print render($page['navigation']); ?>
           <?php endif; ?>
@@ -176,6 +172,7 @@
 </div>
 
 <footer class="footer <?php print $container_class; ?>">
+  <?php if ( !empty($page['footer_left']) || !empty($page['footer_middle']) || !empty($page['footer_right']) ): ?>
   <div class="row">
     <div class="col-md-4">
       <?php if (!empty($page['footer_left'])): ?>
@@ -193,6 +190,21 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="row"></div>
-  <div class="row"></div>
+  <?php endif; ?>
+
+  <?php if (!empty($page['certs'])): ?>
+  <div class="row">
+    <div class="col-xs-12">
+      <?php print render($page['certs']); ?>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <?php if (!empty($page['footer_text'])): ?>
+  <div class="row">
+    <div class="col-xs-12">
+      <?php print render($page['footer_text']); ?>
+    </div>
+  </div>
+  <?php endif; ?>
 </footer>
