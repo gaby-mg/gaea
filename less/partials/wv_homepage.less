@@ -1,0 +1,49 @@
+.page-homepage {
+  .pane-title {
+    text-align: center;
+  }
+
+  .banner-primary {
+    @media (min-width: @grid-float-breakpoint-max) {
+      .thumbnail {
+        margin: 0 0 0 100px;
+      }
+    }
+  }
+
+  .lead-primary {
+    max-width: unset;
+    color: @brand-primary;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    border-top: 15px solid @brand-primary;
+    position: relative;
+
+    &::before {
+      font-family: "Glyphicons Halflings";
+      font-style: normal;
+      content: "\e259";
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      color: #fff;
+      font-weight: bold;
+      background-color: #fe5000;
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      text-align: center;
+      z-index: 2;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-delay: 0s;
+      animation-direction: normal;
+      animation-fill-mode: none;
+      animation-iteration-count: infinite;
+      animation-play-state: running;
+      animation-name: vertical-translation;
+    }
+  }
+}
+
