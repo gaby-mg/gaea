@@ -78,11 +78,9 @@
  *
  * @ingroup templates
  */
-
-$blog_post = entity_metadata_wrapper('node', $node);
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <?php print render($content['field_image']); ?>
+    <?php print render($content['field_picture']); ?>
     <div class="caption">
         <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
             <header>
