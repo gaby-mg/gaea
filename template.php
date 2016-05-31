@@ -5,6 +5,53 @@
  */
 
 /**
+ * Overrides theme_menu_link().
+ */
+function gaea_menu_link(array $variables) {
+    $element = $variables['element'];
+    $sub_menu = '';
+
+    if ($element['#below']) {
+        // Prevent dropdown functions from being added to management menu so it
+        // does not affect the navbar module.
+        if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
+            $sub_menu = drupal_render($element['#below']);
+        }
+        //Here we need to change from ==1 to >=1 to allow for multilevel submenus
+        elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] >= 1)) {
+            // Add our own wrapper.
+            unset($element['#below']['#theme_wrappers']);
+            $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
+            // Generate as standard dropdown.
+            $element['#title'] .= ' <span class="caret"></span>'; // Smartmenus plugin add's caret
+            $element['#attributes']['class'][] = 'dropdown';
+            $element['#localized_options']['html'] = TRUE;
+
+            // Set dropdown trigger element to # to prevent inadvertant page loading
+            // when a submenu link is clicked.
+            $element['#localized_options']['attributes']['data-target'] = '#';
+            $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
+            //comment element bellow if you want your parent menu links to be "clickable"
+            //$element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+        }
+    }
+    // On primary navigation menu, class 'active' is not set on active menu item.
+    // @see https://drupal.org/node/1896674
+    if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
+        $element['#attributes']['class'][] = 'active';
+    }
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
+ * Gaea theme wrapper function for the main menu links.
+ */
+function bootstrap_menu_tree__wv_main_menu(&$variables) {
+    return '<ul class="menu nav navbar-nav">' . $variables['tree'] . '</ul>';
+}
+
+/**
  * Pre-processes variables for the "page" theme hook.
  *
  * See template for list of available variables.
@@ -56,7 +103,6 @@ function gaea_process_page(&$variables) {
 
 /**
  * Processes variables for node.tpl.php
- *
  */
 function gaea_preprocess_node(&$variables) {
     $node = $variables['node'];
@@ -68,6 +114,9 @@ function gaea_preprocess_node(&$variables) {
     }
 }
 
+/**
+ * Processes variables for node--worldvision-project.tpl.php
+ */
 function gaea_preprocess_node_worldvision_project(&$variables) {
     $node = $variables['node'];
 
@@ -82,6 +131,9 @@ function gaea_preprocess_node_worldvision_project(&$variables) {
     $variables['human_development_index'] = $project->field_human_development_index->value();
 }
 
+/**
+ * Processes variables for node--child.tpl.php
+ */
 function gaea_preprocess_node_child(&$variables) {
     $node = $variables['node'];
 
