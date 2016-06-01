@@ -140,11 +140,12 @@ function gaea_preprocess_node_child(&$variables) {
     $child = entity_metadata_wrapper('node', $node);
 
     $variables['child'] = $child;
-    $birthday = field_get_items('node', $node, 'field_child_birthday');
-    $variables['child_birthday'] = field_view_value('node', $node, 'field_child_birthday', $birthday[0]);
-    $variables['child_country'] = $child->field_child_country->value()->name;
-    $variables['child_gender'] = $child->field_child_gender->value() == 'masculino' ? 'Chico' : 'Chica';
-    $variables['child_brothers'] = $child->field_child_brothers->value();
-    $variables['child_sisters'] = $child->field_child_sisters->value();
+    $variables['child_name'] = $child->field_first_name->value();
+    $variables['child_birthday'] = $child->field_birthday->value();
+    $variables['child_favourite_play'] = $child->field_play_desc->value();
+    $variables['child_country'] = $child->field_country->value();
+    $variables['child_gender'] = $child->field_gender->value() == 'M' ? 'Chico' : 'Chica';
+    $variables['child_brothers'] = $child->field_brothers->value();
+    $variables['child_sisters'] = $child->field_sisters->value();
     $variables['this_is_my_world_text'] = $child->field_this_is_my_world->value();
 }

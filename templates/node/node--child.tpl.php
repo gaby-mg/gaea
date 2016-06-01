@@ -81,7 +81,7 @@
 ?>
 <?php if($teaser): ?>
 <article id="node-<?php print $node->nid; ?>" class="thumbnail thumbnail-child"<?php print $attributes; ?>>
-    <img src="<?= file_create_url($child->field_image->value()['uri']); ?>" alt="">
+    <img src="<?= file_create_url($child->field_profile_picture->value()['uri']); ?>" alt="">
     <div class="caption">
         <?php
         // Hide comments, tags, and links now so that we can render them later.
@@ -134,34 +134,16 @@
             <?php endif; ?>
         </header>
     <?php endif; ?>
-    <?php
-    // Hide comments, tags, links and custom fields now so that we can render them later.
-    $hidden_fields = [
-        'comments',
-        'links',
-        'field_image',
-        'field_child_name',
-        'field_child_surname',
-        'field_child_gender',
-        'field_child_birthday',
-        'field_child_country',
-        'field_child_brothers',
-        'field_child_sisters',
-    ];
-
-    foreach ($hidden_fields as $hidden_field) {
-        hide($content[$hidden_field]);
-    };
-    ?>
     <div class="row">
         <div class="col-sm-4">
             <div class="child-thumbnail">
-                <img class="img-circle" src="<?= file_create_url($child->field_image->value()['uri']); ?>" alt="">
+                <img class="img-circle" src="<?= file_create_url($child->field_profile_picture->value()['uri']); ?>" alt="">
             </div>
         </div>
         <div class="col-sm-8">
             <div class="child-summary">
-                <h2>Hola, me llamo <?= $title; ?></h2>
+                <h2 class="hidden-xs">Hola, me llamo <span class="child-name"><?= $child_name; ?></span></h2>
+                <h2 class="visible-xs brand">Apadrina a <?= $child_name; ?></h2>
                 <ul class="list-inline text-center">
                     <li>
                         <span class="child-summary-attr">Sexo</span>
@@ -183,11 +165,11 @@
                     </li>
                 </ul>
                 <blockquote class="child-soliloquy">
-                    Mi cumpleaños es el <?php print render($child_birthday); ?> y tengo <?= $child_brothers; ?> hermanos y <?= $child_sisters; ?> hermanas.
-                    Mi juego favorito es <?= $title; ?>. La vida en <?= $child_country; ?> es difícil para los niños como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
+                    Mi cumpleaños es el <?= $child_birthday; ?> y tengo <?= $child_brothers; ?> hermanos y <?= $child_sisters; ?> hermanas.
+                    Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para los niños como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
                 </blockquote>
             </div>
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $title; ?> ahora</a></p>
+            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
     </div>
     <div class="row">
@@ -211,7 +193,7 @@
                 <div class="video-overlay">
                     <img class="play" src="http://cdn.worldvision.org.uk/1461857065/themes/world_vision_reponsive/img/sponsor-video-play.png" alt="play video">
                     <span>Watch his video</span>
-                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $title; ?> ahora</a></p>
+                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $child_name; ?> ahora</a></p>
                 </div>
             </div>
         </div>
@@ -223,9 +205,9 @@
 
             <h2>Vivo en <?= $child_country; ?></h2>
 
-            <p class="lead"><?= $this_is_my_world_text; ?></p>
+            <p class="lead text-center"><?= $this_is_my_world_text; ?></p>
 
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $title; ?> ahora</a></p>
+            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
     </div>
 
@@ -244,7 +226,7 @@
                 <?php endforeach; ?>
             </div>
 
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $title; ?> ahora</a></p>
+            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
     </div>
 
@@ -269,7 +251,7 @@
                 <div class="video-overlay">
                     <img class="play" src="http://cdn.worldvision.org.uk/1461857065/themes/world_vision_reponsive/img/sponsor-video-play.png" alt="play video">
                     <span>Watch his video</span>
-                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $title; ?> ahora</a></p>
+                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $child_name; ?> ahora</a></p>
                 </div>
             </div>
         </div>
@@ -284,10 +266,10 @@
             <p class="lead text-center">Lo primero que recibirás será una carpeta con más información sobre <?= $title ?> – su foto, información básica sobre su familia y su comunidad – y unas semanas más tarde recibirás su primera carta desde <?= $child_country ?>.</p>
             <p class="lead text-center">Siempre que escribas a <?= $title ?> recibirás una carta como respuesta. De esta forma podrás mantener con tu niño apadrinado una estrecha relación y le conocerás cada vez un poco más.</p>
             <p class="lead text-center">Todos los padrinos reciben informes periódicos sobre la evolución de los proyectos, sobre cómo estamos invirtiendo las donaciones en la infancia y cómo va cambiando la situación de cada niño y su comunidad. Además tienes la oportunidad de visitarle en una experiencia mágica y única en tu vida en la que conocerás de primera mano su mundo y su comunidad.</p>
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $title; ?> ahora</a></p>
+            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
     </div>
-    <a href="" class="visible-xs btn btn-primary btn-large btn-fixed">Apadrina a <?= $title; ?> ahora</a>
+    <a href="" class="visible-xs btn btn-primary btn-large btn-fixed">Apadrina a <?= $child_name; ?> ahora</a>
     <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
         <footer>
             <?php print render($content['field_tags']); ?>
