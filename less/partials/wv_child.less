@@ -1,9 +1,19 @@
-.node-type-child,
 .node-child {
-  .page-header,
+
   h2 {
     text-align: center;
-    text-transform: uppercase;
+    font-family: "Gill Sans MT Light Regular", Helvetica, Arial, sans-serif;
+
+    @media (min-width: @grid-float-breakpoint-max) {
+      font-size: 48px;
+      line-height: 1.1em;
+      margin-bottom: 17px;
+      color: @gray-base;
+    }
+  }
+
+  .child-name {
+    color: @brand-primary;
   }
 
   .lead.text-center {
@@ -26,10 +36,19 @@
 
   .child-soliloquy {
     font-family: "Gill Sans MT Light Regular", Helvetica, Arial, sans-serif;
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      border-left: unset;
+      text-align: center;
+    }
   }
 
   .child-summary-attr {
     font-weight: bold;
+
+    &:after {
+      content: ":";
+    }
   }
 
   .child-video-container {
@@ -84,18 +103,6 @@
       z-index: 3;
     }
   }
-}
-
-.clock {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 100px;
-  border-radius: 50%;
-  background-color: #eee;
-  color: #fe5000;
-  font-size: 1.75em;
 }
 
 .thumbnail-child {
