@@ -11,6 +11,7 @@
 @import 'variable-overrides';
 
 // Partials
+@import 'partials/typography';
 @import 'partials/footer';
 @import 'partials/navs';
 @import 'partials/comments';
@@ -19,28 +20,18 @@
 @import 'partials/wv_project';
 @import 'partials/wv_child';
 
-b,
-strong,
-em {
-  color: @brand-primary;
-}
 
-p {
-
-  &.lead {
-    max-width: 33em;
-    margin: 0 auto;
-  }
-}
-
-b,
-strong {
-  font-family: "Gill Sans MT Bold", Helvetica, Arial, sans-serif;
-}
-
-.page-header,
-.post-title {
+// Mixins
+.clock {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
   text-align: center;
+  line-height: 100px;
+  border-radius: 50%;
+  background-color: #eee;
+  color: #fe5000;
+  font-size: 1.75em;
 }
 
 .arrow-up {
