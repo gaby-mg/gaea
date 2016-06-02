@@ -165,8 +165,17 @@
                     </li>
                 </ul>
                 <blockquote class="child-soliloquy">
-                    Mi cumpleaños es el <?= $child_birthday; ?> y tengo <?= $child_brothers; ?> hermanos y <?= $child_sisters; ?> hermanas.
-                    Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para los niños como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
+                    Mi cumpleaños es el <?= $child_birthday; ?> y
+                    <?php if($child_brothers and $child_sisters): ?>
+                        tengo <?= $child_brothers ?> hermano<?= $child_brothers > 1 ? 's' : '' ?> y <?= $child_sisters; ?> hermana<?= $child_sisters > 1 ? 's' : '' ?>.
+                    <?php elseif ($child_brothers): ?>
+                        tengo <?= $child_brothers ?> hermanos.
+                    <?php elseif ($child_sisters): ?>
+                        tengo <?= $child_sisters ?> hermanas.
+                    <?php else: ?>
+                        no tengo hermanos ni hermanas.
+                    <?php endif; ?>
+                    Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para l<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s niñ<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
                 </blockquote>
             </div>
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
@@ -201,13 +210,15 @@
     <!-- This Is My World -->
     <div class="row">
         <div class="col-xs-12">
-            <div class="clock">2:06pm</div>
+            <div class="clock">2:06<span>pm</span></div>
 
             <h2>Vivo en <?= $child_country; ?></h2>
 
             <p class="lead text-center"><?= $this_is_my_world_text; ?></p>
 
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
+
+            <img class="img-responsive" src="<?= file_create_url($child->field_featured_image->value()['uri']); ?>" alt="">
         </div>
     </div>
 
@@ -219,9 +230,9 @@
             <div class="row">
                 <?php foreach ($child->field_change_my_world as $change_my_world_item): ?>
                 <div class="col-xs-12 col-sm-4">
-                    <img class="img-responsive" src="<?= file_create_url($change_my_world_item->field_image->value()['uri']); ?>" alt="">
-                    <p class="text-danger"><?= $change_my_world_item->field_problema->value(); ?></p>
-                    <p class="text-success"><?= $change_my_world_item->field_solucion->value(); ?></p>
+                    <img class="img-circle" src="<?= file_create_url($change_my_world_item->field_image->value()['uri']); ?>" alt="">
+                    <p class="text-problem"><?= $change_my_world_item->field_problema->value(); ?></p>
+                    <p class="text-solution"><?= $change_my_world_item->field_solucion->value(); ?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -262,9 +273,9 @@
         <div class="col-xs-12">
             <h2>Qué recibes cuando apadrinas?</h2>
 
-            <p class="lead text-center">Si apadrinas a <?= $title ?> hoy cambiarás su vida mientras eres testigo del cambio. Gracias a las fotos y las cartas le verás crecer y serás una pieza clave en su vida. Además, a través de sus ojos verás cómo cambia su familia y su comunidad.</p>
-            <p class="lead text-center">Lo primero que recibirás será una carpeta con más información sobre <?= $title ?> – su foto, información básica sobre su familia y su comunidad – y unas semanas más tarde recibirás su primera carta desde <?= $child_country ?>.</p>
-            <p class="lead text-center">Siempre que escribas a <?= $title ?> recibirás una carta como respuesta. De esta forma podrás mantener con tu niño apadrinado una estrecha relación y le conocerás cada vez un poco más.</p>
+            <p class="lead text-center">Si apadrinas a <?= $child_name ?> hoy cambiarás su vida mientras eres testigo del cambio. Gracias a las fotos y las cartas le verás crecer y serás una pieza clave en su vida. Además, a través de sus ojos verás cómo cambia su familia y su comunidad.</p>
+            <p class="lead text-center">Lo primero que recibirás será una carpeta con más información sobre <?= $child_name ?> – su foto, información básica sobre su familia y su comunidad – y unas semanas más tarde recibirás su primera carta desde <?= $child_country ?>.</p>
+            <p class="lead text-center">Siempre que escribas a <?= $child_name ?> recibirás una carta como respuesta. De esta forma podrás mantener con tu niño apadrinado una estrecha relación y le conocerás cada vez un poco más.</p>
             <p class="lead text-center">Todos los padrinos reciben informes periódicos sobre la evolución de los proyectos, sobre cómo estamos invirtiendo las donaciones en la infancia y cómo va cambiando la situación de cada niño y su comunidad. Además tienes la oportunidad de visitarle en una experiencia mágica y única en tu vida en la que conocerás de primera mano su mundo y su comunidad.</p>
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
