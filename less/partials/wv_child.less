@@ -24,13 +24,41 @@
     margin: 40px auto;
   }
 
+  .text-problem,
+  .text-solution {
+    text-align: center;
+    max-width: 33em;
+  }
+
+  .text-problem {
+    margin-top: 1em;
+
+    @media (min-width: @grid-float-breakpoint-max) {
+      min-height: 100px;
+    }
+  }
+
+  .text-solution {
+    color: @brand-primary;
+    font-size: 18px;
+  }
+
+  .img-circle {
+    width: 160px;
+    height: 160px;
+    display: block;
+    margin: 0 auto;
+  }
+
   .child-thumbnail {
     text-align: center;
 
-    .img-circle {
-      width: 200px;
-      height: 200px;
-      overflow: hidden;
+    @media (min-width: @grid-float-breakpoint-max) {
+      .img-circle {
+        width: 200px;
+        height: 200px;
+        margin-top: 60px;
+      }
     }
   }
 
@@ -40,15 +68,20 @@
     @media (max-width: @grid-float-breakpoint-max) {
       border-left: unset;
       text-align: center;
+      padding: unset;
+      font-size: unset;
     }
   }
 
   .child-summary-attr {
-    font-weight: bold;
 
     &:after {
       content: ":";
     }
+  }
+
+  .child-summary-val {
+    font-family: "Gill Sans MT Bold", Helvetica, Arial, sans-serif;
   }
 
   .child-video-container {
