@@ -147,5 +147,4 @@ function gaea_preprocess_node_child(&$variables) {
     $variables['child_gender'] = $child->field_gender->value() == 'M' ? 'Chico' : 'Chica';
     $variables['child_brothers'] = $child->field_brothers->value();
     $variables['child_sisters'] = $child->field_sisters->value();
-    $variables['this_is_my_world_text'] = $child->field_this_is_my_world->value();
 }
