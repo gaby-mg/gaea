@@ -186,7 +186,7 @@
             <div class="child-video-container">
                 <div class="arrow-down hidden-xs"></div>
                 <video class="child-video hidden-xs" width="100%">
-                    <source src="<?= file_create_url($child->field_featured_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
+                    <source src="<?= file_create_url($child->field_greetings_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
                     <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
                     <!-- fallback to Flash: -->
                     <object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
@@ -214,11 +214,11 @@
 
             <h2>Vivo en <?= $child_country; ?></h2>
 
-            <p class="lead text-center"><?= $this_is_my_world_text; ?></p>
+            <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de América Latina. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
 
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
 
-            <img class="img-responsive" src="<?= file_create_url($child->field_featured_image->value()['uri']); ?>" alt="">
+            <img class="img-responsive" src="" alt="">
         </div>
     </div>
 
@@ -228,13 +228,13 @@
             <h2>Cambia mi mundo</h2>
 
             <div class="row">
-                <?php foreach ($child->field_change_my_world as $change_my_world_item): ?>
+                <?php //foreach ($child->field_change_my_world as $change_my_world_item): ?>
                 <div class="col-xs-12 col-sm-4">
-                    <img class="img-circle" src="<?= file_create_url($change_my_world_item->field_image->value()['uri']); ?>" alt="">
-                    <p class="text-problem"><?= $change_my_world_item->field_problema->value(); ?></p>
-                    <p class="text-solution"><?= $change_my_world_item->field_solucion->value(); ?></p>
+                    <img class="img-circle" src="" alt="">
+                    <p class="text-problem"></p>
+                    <p class="text-solution"></p>
                 </div>
-                <?php endforeach; ?>
+                <?php //endforeach; ?>
             </div>
 
             <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
@@ -243,27 +243,11 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div class="child-video-container">
-                <div class="arrow-down hidden-xs"></div>
-                <video class="child-video hidden-xs" width="100%">
-                    <source src="<?= file_create_url($child->field_featured_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
-                    <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
-                    <!-- fallback to Flash: -->
-                    <object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
-                        <!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
-                        <param name="movie" value="__FLASH__.SWF" />
-                        <param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
-                        <!-- fallback image. note the title field below, put the title of the video there -->
-                        <img src="__VIDEO__.JPG" width="640" height="360" alt="__TITLE__"
-                             title="No video playback capabilities, please download the video below" />
-                    </object>
-                </video>
-                <div class="video-overlay-bg"></div>
-                <div class="video-overlay">
-                    <img class="play" src="http://cdn.worldvision.org.uk/1461857065/themes/world_vision_reponsive/img/sponsor-video-play.png" alt="play video">
-                    <span>Watch his video</span>
-                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $child_name; ?> ahora</a></p>
-                </div>
+            <div class="embed-responsive embed-responsive-4by3 visible-xs">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/09459gfcfNM" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="embed-responsive embed-responsive-16by9 hidden-xs">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/09459gfcfNM" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
