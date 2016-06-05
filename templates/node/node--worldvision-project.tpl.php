@@ -115,7 +115,6 @@
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
   <header>
-      <?php print render($content['field_image']); ?>
       <?php print render($title_prefix); ?>
     <?php if (!$page && !empty($title)): ?>
     <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
@@ -129,47 +128,25 @@
     <?php endif; ?>
   </header>
   <?php endif; ?>
-  <?php
-    // Hide comments, tags, links and custom fields now so that we can render them later.
-    $hidden_fields = [
-        'comments',
-        'links',
-        'field_tags',
-        'field_country_flag',
-        'field_country_capital',
-        'field_country_population',
-        'field_life_expectancy',
-        'field_child_mortality_rate',
-        'field_hiv_rate',
-        'field_human_development_index',
-        'field_coat_of_arms',
-        'field_country_location',
-        'field_nuestro_trabajo',
-        'field_country_context',
-        'field_child_day',
-    ];
-
-    foreach ($hidden_fields as $hidden_field) {
-        hide($content[$hidden_field]);
-    }
-  ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="featured-image">
+                <img class="img-responsive" src="<?= file_create_url($project->field_featured_image->value()['uri']); ?>" alt="">
+                <div class="caption"><?= $project->field_featured_image->value()['description']; ?></div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-9">
-            <?php print render($content); ?>
-
             <div class="row">
                 <div class="col-xs-12">
                     <h2>Contexto</h2>
 
                     <?php foreach($project->field_country_context as $country_context_item) : ?>
                         <div class="col-md-6">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img class="media-object" src="<?= file_create_url($country_context_item->field_country_context_icon->value()['uri']); ?>" alt="" width="32" height="32">
-                                </div>
-                                <div class="media-body">
-                                    <?= $country_context_item->field_country_context_text->value(); ?>
-                                </div>
+                            <div class="well">
+                                <img src="<?= file_create_url($country_context_item->field_country_context_icon->value()['uri']); ?>" alt="" width="32" height="32">
+                                <?= $country_context_item->field_country_context_text->value(); ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -184,28 +161,9 @@
                 </div>
 
             </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Nuestro trabajo</h2>
-
-                    <div class="row">
-                        <?php foreach($project->field_nuestro_trabajo as $country_work_item) : ?>
-                            <div class="col-xs-12 col-sm-6 col-md-3">
-                                <div class="thumbnail">
-                                    <img src="<?= file_create_url($country_work_item->field_wv_work_image->value()['uri']); ?>">
-                                    <div class="caption">
-                                        <p><?= $country_work_item->field_wv_work_text->value()['value']; ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </div>
         </div><!-- .col-md-9 -->
         <div class="col-md-3">
-            <aside class="infobox">
+            <aside class="infobox hidden-xs">
                 <table class="table">
                     <tr>
                         <td style='width: 50%; vertical-align: middle;'><?php print render($content['field_country_flag']); ?></td>
@@ -216,30 +174,46 @@
                     </tr>
                     <tr>
                         <td class="field-label">Capital</td>
-                        <td><?= $capital; ?></td>
+                        <td class="field-value"><?= $capital; ?></td>
                     </tr>
                     <tr>
                         <td class="field-label">Población</td>
-                        <td><?= $population; ?></td>
+                        <td class="field-value"><?= $population; ?> habitantes</td>
                     </tr>
                     <tr>
                         <td class="field-label">Esperanza de vida</td>
-                        <td><?= $life_expectancy; ?></td>
+                        <td class="field-value"><?= $life_expectancy; ?> años</td>
                     </tr>
                     <tr>
                         <td class="field-label">Tasa de mortalidad infantil</td>
-                        <td><?php print render($child_mortality_rate); ?></td>
+                        <td class="field-value"><?php print render($child_mortality_rate); ?> %</td>
                     </tr>
+                    <?php if( !empty($hiv_rate) ): ?>
                     <tr>
                         <td class="field-label">Tasa VIH</td>
-                        <td><?php print render($hiv_rate); ?></td>
+                        <td class="field-value"><?php print render($hiv_rate); ?> %</td>
                     </tr>
+                    <?php endif; ?>
                     <tr>
-                        <td class="field-label">Índice de desarrollo humano</td>
-                        <td><?php print render($human_development_index); ?></td>
+                        <td class="field-label"><abbr title="Índice de desarrollo humano">IDH</abbr></td>
+                        <td class="field-value"><?php print render($human_development_index); ?></td>
                     </tr>
                 </table>
             </aside>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Nuestro trabajo</h2>
+
+            <div class="row">
+                <?php foreach($project->field_nuestro_trabajo as $country_work_item) : ?>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <img class="img-circle" src="<?= file_create_url($country_work_item->field_wv_work_image->value()['uri']); ?>">
+                        <p><?= $country_work_item->field_wv_work_text->value()['value']; ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 
