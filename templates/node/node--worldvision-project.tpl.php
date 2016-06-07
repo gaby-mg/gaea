@@ -202,20 +202,6 @@
             </aside>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>Nuestro trabajo</h2>
-
-            <div class="row">
-                <?php foreach($project->field_nuestro_trabajo as $country_work_item) : ?>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <img class="img-circle" src="<?= file_create_url($country_work_item->field_wv_work_image->value()['uri']); ?>">
-                        <p><?= $country_work_item->field_wv_work_text->value()['value']; ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
 
   <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
   <footer>
