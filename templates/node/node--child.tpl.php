@@ -81,7 +81,7 @@
 ?>
 <?php if($teaser): ?>
 <article id="node-<?php print $node->nid; ?>" class="thumbnail thumbnail-child"<?php print $attributes; ?>>
-    <img src="<?= file_create_url($child->field_profile_picture->value()['uri']); ?>" alt="">
+    <?php print render($content['field_profile_picture']); ?>
     <div class="caption">
         <?php
         // Hide comments, tags, and links now so that we can render them later.
