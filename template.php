@@ -88,6 +88,16 @@ function gaea_preprocess_page(&$variables) {
     }
 }
 
+function gaea_preprocess_image_style(&$vars) {
+    if($vars['style_name'] == 'bootstrap_thumbnail_image') {
+        $vars['attributes']['class'][] = 'img-thumbnail'; // can be 'img-rounded', 'img-circle', or 'img-thumbnail'
+    } elseif ($vars['style_name'] == 'bootstrap_rounded_image') {
+        $vars['attributes']['class'][] = 'img-rounded';
+    } elseif ($vars['style_name'] == 'bootstrap_circle_image') {
+        $vars['attributes']['class'][] = 'img-circle';
+    }
+}
+
 /**
  * Processes variables for the "page" theme hook.
  *
