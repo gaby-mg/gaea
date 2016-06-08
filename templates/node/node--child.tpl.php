@@ -122,7 +122,7 @@
     <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
         <header>
             <?php print render($title_prefix); ?>
-            <?php if ($page && !empty($title)): ?>
+            <?php if (!$page && !empty($title)): ?>
                 <h2<?php print $title_attributes; ?>>Apadrina un niño ahora y cambia su vida para siempre</h2>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
@@ -178,7 +178,7 @@
                     Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para l<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s niñ<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
                 </blockquote>
             </div>
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
+            <p class="text-center hidden-xs"><a href="/apadrinar-un-nino/nidc/<?= $title; ?>" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
     </div>
     <div class="row">
@@ -216,55 +216,12 @@
 
             <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de América Latina. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
 
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
+            <p class="text-center hidden-xs"><a href="/apadrinar-un-nino/nidc/<?= $title; ?>" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
 
             <img class="img-responsive" src="" alt="">
         </div>
     </div>
 
-    <!-- Change My World -->
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>Cambia mi mundo</h2>
-
-            <div class="row">
-                <?php //foreach ($child->field_change_my_world as $change_my_world_item): ?>
-                <div class="col-xs-12 col-sm-4">
-                    <img class="img-circle" src="" alt="">
-                    <p class="text-problem"></p>
-                    <p class="text-solution"></p>
-                </div>
-                <?php //endforeach; ?>
-            </div>
-
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="embed-responsive embed-responsive-4by3 visible-xs">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/09459gfcfNM" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="embed-responsive embed-responsive-16by9 hidden-xs">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/09459gfcfNM" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Share My Journey -->
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>Qué recibes cuando apadrinas?</h2>
-
-            <p class="lead text-center">Si apadrinas a <?= $child_name ?> hoy cambiarás su vida mientras eres testigo del cambio. Gracias a las fotos y las cartas le verás crecer y serás una pieza clave en su vida. Además, a través de sus ojos verás cómo cambia su familia y su comunidad.</p>
-            <p class="lead text-center">Lo primero que recibirás será una carpeta con más información sobre <?= $child_name ?> – su foto, información básica sobre su familia y su comunidad – y unas semanas más tarde recibirás su primera carta desde <?= $child_country ?>.</p>
-            <p class="lead text-center">Siempre que escribas a <?= $child_name ?> recibirás una carta como respuesta. De esta forma podrás mantener con tu niño apadrinado una estrecha relación y le conocerás cada vez un poco más.</p>
-            <p class="lead text-center">Todos los padrinos reciben informes periódicos sobre la evolución de los proyectos, sobre cómo estamos invirtiendo las donaciones en la infancia y cómo va cambiando la situación de cada niño y su comunidad. Además tienes la oportunidad de visitarle en una experiencia mágica y única en tu vida en la que conocerás de primera mano su mundo y su comunidad.</p>
-            <p class="text-center hidden-xs"><a href="" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
-        </div>
-    </div>
-    <a href="" class="visible-xs btn btn-primary btn-large btn-fixed">Apadrina a <?= $child_name; ?> ahora</a>
     <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
         <footer>
             <?php print render($content['field_tags']); ?>
