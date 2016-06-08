@@ -131,8 +131,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="featured-image">
-                <img class="img-responsive" src="<?= file_create_url($project->field_featured_image->value()['uri']); ?>" alt="">
-                <div class="caption"><?= $project->field_featured_image->value()['description']; ?></div>
+                <?php print render($content['field_featured_image']); ?>
             </div>
         </div>
     </div>
