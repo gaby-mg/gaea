@@ -93,7 +93,7 @@ function gaea_preprocess_image_style(&$vars) {
         $vars['attributes']['class'][] = 'img-thumbnail'; // can be 'img-rounded', 'img-circle', or 'img-thumbnail'
     } elseif ($vars['style_name'] == 'bootstrap_rounded_image') {
         $vars['attributes']['class'][] = 'img-rounded';
-    } elseif ($vars['style_name'] == 'bootstrap_circle_image') {
+    } elseif ($vars['style_name'] == 'bootstrap_circle_image' || $vars['style_name'] == 'bootstrap_circle_image_black_white') {
         $vars['attributes']['class'][] = 'img-circle';
     }
 }
