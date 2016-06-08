@@ -95,7 +95,7 @@
             <header>
                 <?php print render($title_prefix); ?>
                 <?php if (!$page && !empty($title)): ?>
-                    <h2<?php print $title_attributes; ?> class="text-center"><a href="<?php print $node_url; ?>">Apadrina a <?php print $title; ?>, 6 años</a></h2>
+                    <h2<?php print $title_attributes; ?> class="text-center"><a href="<?php print $node_url; ?>">Apadrina a <?= $child_name; ?>, 6 años</a></h2>
                 <?php endif; ?>
                 <?php print render($title_suffix); ?>
                 <?php if ($display_submitted): ?>
