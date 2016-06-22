@@ -183,26 +183,22 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="child-video-container">
+            <div class="video-container">
                 <div class="arrow-down hidden-xs"></div>
-                <video class="child-video hidden-xs" width="100%">
-                    <source src="<?= file_create_url($child->field_greetings_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
-                    <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
-                    <!-- fallback to Flash: -->
-                    <object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
-                        <!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
-                        <param name="movie" value="__FLASH__.SWF" />
-                        <param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
-                        <!-- fallback image. note the title field below, put the title of the video there -->
-                        <img src="__VIDEO__.JPG" width="640" height="360" alt="__TITLE__"
-                             title="No video playback capabilities, please download the video below" />
-                    </object>
-                </video>
-                <div class="video-overlay-bg"></div>
-                <div class="video-overlay">
-                    <img class="play" src="http://cdn.worldvision.org.uk/1461857065/themes/world_vision_reponsive/img/sponsor-video-play.png" alt="play video">
-                    <span>Watch his video</span>
-                    <p class="text-center"><a href="" class="btn btn-default">Apadrina a <?= $child_name; ?> ahora</a></p>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video>
+                        <source src="<?= file_create_url($child->field_greetings_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
+                        <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
+                        <!-- fallback to Flash: -->
+                        <object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
+                            <!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
+                            <param name="movie" value="__FLASH__.SWF" />
+                            <param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
+                            <!-- fallback image. note the title field below, put the title of the video there -->
+                            <img src="__VIDEO__.JPG" width="640" height="360" alt="__TITLE__"
+                                 title="No video playback capabilities, please download the video below" />
+                        </object>
+                    </video>
                 </div>
             </div>
         </div>
