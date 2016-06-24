@@ -185,8 +185,8 @@
         <div class="col-xs-12">
             <div class="video-container">
                 <div class="arrow-down hidden-xs"></div>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <video>
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video class="embed-responsive-item" controls>
                         <source src="<?= file_create_url($child->field_greetings_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
                         <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
                         <!-- fallback to Flash: -->
