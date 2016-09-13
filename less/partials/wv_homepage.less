@@ -3,6 +3,7 @@
   .banner {
     margin-bottom: 30px;
     padding: 16px 20px;
+    position: relative;
 
     .pane-title {
       font-family: "Gill Sans MT Regular", Helvetica, Arial, sans-serif;
@@ -46,6 +47,13 @@
 
     &.banner-secondary {
       min-height: 320px;
+
+      @media (min-width: @grid-float-breakpoint-max) {
+        .banner-cta {
+          position: absolute;
+          bottom: 32px;
+        }
+      }
     }
 
     &#regalo-solidario {
