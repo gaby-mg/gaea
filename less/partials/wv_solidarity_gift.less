@@ -1,0 +1,32 @@
+.view-wv-solidarity-gifts-listing {
+  text-align: center;
+
+  .views-bootstrap-grid-plugin-style > .row {
+    min-height: 300px;
+  }
+
+  .btn.btn-success.form-submit {
+    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  }
+}
+
+.node-type-wv-solidarity-gift-display {
+  p,
+  .field-name-commerce-price {
+    margin-bottom: @line-height-computed;
+    font-size: floor((@font-size-base * 1.15));
+    font-weight: 300;
+    line-height: 1.4;
+    text-align: center;
+
+    @media (min-width: @screen-sm-min) {
+      font-size: (@font-size-base * 1.5);
+    }
+  }
+
+  .field-label {
+    max-width: 33em;
+    margin: 0 auto;
+  }
+}
+
