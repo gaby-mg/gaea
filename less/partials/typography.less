@@ -10,12 +10,6 @@ em,
   color: @brand-primary;
 }
 
-p {
-  max-width: 50em;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 
 //== Headings
 h1,
@@ -32,17 +26,32 @@ h2 {
 
 }
 
+
+// For 28px sized headings
 h3 {
-  max-width: 50em;
+  max-width: 28,571428571em;
 }
 
 
+//== Paragraphs
 p {
+  max-width: 50em;
+  margin-right: auto;
+  margin-left: auto;
 
   &.lead {
     max-width: 33em;
     margin: 0 auto;
   }
+}
+
+//== Blockquotes
+
+blockquote {
+  // For 20px sized blockquotes
+  max-width: 40em;
+  margin: 0 auto 22px;
+  font-style: italic;
 }
 
 //== Buttons
