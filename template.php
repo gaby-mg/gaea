@@ -112,6 +112,20 @@ function gaea_process_page(&$variables) {
 }
 
 /**
+ * Alter the array used for colorizing text.
+ *
+ * @param array $texts
+ *   An associative array containing the text and classes to be matched, passed
+ *   by reference.
+ *
+ * @see _bootstrap_colorize_text()
+ */
+
+function gaea_bootstrap_colorize_text_alter(&$texts) {
+    $texts['matches'][t('Add to cart')] = 'primary';
+}
+
+/**
  * Processes variables for node.tpl.php
  */
 function gaea_preprocess_node(&$variables) {
