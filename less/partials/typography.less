@@ -64,7 +64,7 @@ blockquote {
   position: relative;
   
   &::before,
-  &::after {
+  &:last-child::after {
     content: '"';
     font-size: 1.5em;
     color: @brand-primary;
@@ -75,7 +75,7 @@ blockquote {
     left: 0;
   }
 
-  &::before {
+  &:last-child::after {
     right: 0;
   }
 }
