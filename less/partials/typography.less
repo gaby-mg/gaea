@@ -36,8 +36,8 @@ h3 {
 //== Paragraphs
 p {
   max-width: 50em;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 
   &.lead {
     max-width: 33em;
@@ -45,13 +45,39 @@ p {
   }
 }
 
+.views-field-body ul,
+.views-field-body ol {
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 //== Blockquotes
 
 blockquote {
+  border-left: none;
+  
   // For 20px sized blockquotes
   max-width: 40em;
   margin: 0 auto 22px;
   font-style: italic;
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: '"';
+    font-size: 1.5em;
+    color: @brand-primary;
+    position: absolute;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::before {
+    right: 0;
+  }
 }
 
 //== Buttons
