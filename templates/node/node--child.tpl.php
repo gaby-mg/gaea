@@ -178,7 +178,6 @@
                     Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para l<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s niñ<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
                 </blockquote>
             </div>
-            <p class="text-center hidden-xs"><a href="/apadrinar-un-nino/nidc/<?= $title; ?>" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
         </div>
     </div>
     <div class="row">
@@ -211,10 +210,6 @@
             <h2>Vivo en <?= $child_country; ?></h2>
 
             <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de América Latina. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
-
-            <p class="text-center hidden-xs"><a href="/apadrinar-un-nino/nidc/<?= $title; ?>" class="btn btn-primary">Apadrina a <?= $child_name; ?> ahora</a></p>
-
-            <img class="img-responsive" src="" alt="">
         </div>
     </div>
 
