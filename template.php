@@ -164,11 +164,16 @@ function gaea_preprocess_node_child(&$variables) {
     $child = entity_metadata_wrapper('node', $node);
 
     $variables['child'] = $child;
-    $variables['child_name'] = $child->field_first_name->value();
-    $variables['child_birthday'] = $child->field_birthday->value();
-    $variables['child_favourite_play'] = $child->field_play_desc->value();
-    $variables['child_country'] = $child->field_country->value();
-    $variables['child_gender'] = $child->field_gender->value() == 'M' ? 'Chico' : 'Chica';
-    $variables['child_brothers'] = $child->field_brothers->value();
-    $variables['child_sisters'] = $child->field_sisters->value();
+    $variables['child_name'] = $child->field_child_reference->field_first_name->value();
+    $variables['child_birthday'] = format_date($child->field_child_reference->field_child_birthday->value());
+    $variables['child_favourite_play'] = $child->field_child_reference->field_play_desc->value();
+    $variables['child_country'] = $child->field_child_reference->field_child_country->name->value();
+    $variables['child_gender'] = $child->field_child_reference->field_gender->value() == 'M' ? 'Chico' : 'Chica';
+    $variables['child_brothers'] = $child->field_child_reference->field_brothers->value();
+    $variables['child_sisters'] = $child->field_child_reference->field_sisters->value();
+    $birthday = explode("/", $variables['child_birthday']);
+    $age = (date("md", date("U", mktime(0, 0, 0, $birthday[0], $birthday[1], $birthday[2]))) > date("md")
+	        ? ((date("Y") - $birthday[2]) - 1)
+		    : (date("Y") - $birthday[2]));
+    $variables['child_age'] = $age;
 }
