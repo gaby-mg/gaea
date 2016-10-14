@@ -61,22 +61,19 @@ blockquote {
   max-width: 40em;
   margin: 0 auto 22px;
   font-style: italic;
-  position: relative;
-  
-  &::before,
-  &:last-child::after {
-    content: '"';
-    font-size: 1.5em;
+  quotes: "«" "»";
+
+  &:before,
+  &:after {
     color: @brand-primary;
-    position: absolute;
   }
 
-  &::before {
-    left: 0;
+  &:before {
+    content: open-quote;
   }
 
-  &:last-child::after {
-    right: 0;
+  &:after {
+    content: close-quote;
   }
 }
 
