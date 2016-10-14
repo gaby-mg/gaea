@@ -154,7 +154,7 @@
                     <li>
                         <span class="child-summary-attr">Edad</span>
                         <span class="child-summary-val">
-
+                            <?= $child_age ?>
                         </span>
                     </li>
                     <li>
@@ -165,17 +165,19 @@
                     </li>
                 </ul>
                 <blockquote class="child-soliloquy">
-                    Mi cumpleaños es el <?= $child_birthday; ?> y
-                    <?php if($child_brothers and $child_sisters): ?>
-                        tengo <?= $child_brothers ?> hermano<?= $child_brothers > 1 ? 's' : '' ?> y <?= $child_sisters; ?> hermana<?= $child_sisters > 1 ? 's' : '' ?>.
-                    <?php elseif ($child_brothers): ?>
-                        tengo <?= $child_brothers ?> hermanos.
-                    <?php elseif ($child_sisters): ?>
-                        tengo <?= $child_sisters ?> hermanas.
-                    <?php else: ?>
-                        no tengo hermanos ni hermanas.
-                    <?php endif; ?>
-                    Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para l<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s niñ<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
+                    <p>
+                        Mi cumpleaños es el <?= $child_birthday; ?> y
+                        <?php if($child_brothers and $child_sisters): ?>
+                            tengo <?= $child_brothers ?> hermano<?= $child_brothers > 1 ? 's' : '' ?> y <?= $child_sisters; ?> hermana<?= $child_sisters > 1 ? 's' : '' ?>.
+                        <?php elseif ($child_brothers): ?>
+                            tengo <?= $child_brothers ?> hermanos.
+                        <?php elseif ($child_sisters): ?>
+                            tengo <?= $child_sisters ?> hermanas.
+                        <?php else: ?>
+                            no tengo hermanos ni hermanas.
+                        <?php endif; ?>
+                        Mi juego favorito es <?= $child_favourite_play; ?>. La vida en <?= $child_country; ?> es difícil para l<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s niñ<?= $child_gender == 'Chico' ? 'o' : 'a' ?>s como yo pero si me apadrinas hoy mi vida cambiará y tendré un futuro mejor.
+                    </p>
                 </blockquote>
             </div>
         </div>
