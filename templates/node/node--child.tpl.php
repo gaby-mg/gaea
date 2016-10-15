@@ -158,7 +158,7 @@
                         </span>
                     </li>
                     <li>
-                        <span class="child-summary-attr">Mi casa</span>
+                        <span class="child-summary-attr">Vivo en</span>
                         <span class="child-summary-val">
                             <?= $child_country; ?>
                         </span>
@@ -211,7 +211,7 @@
 
             <h2>Vivo en <?= $child_country; ?></h2>
 
-            <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de América Latina. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
+	    <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de <?= $child_continent ?>. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
         </div>
     </div>
 
