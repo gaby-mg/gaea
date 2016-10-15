@@ -168,6 +168,19 @@ function gaea_preprocess_node_child(&$variables) {
     $variables['child_birthday'] = format_date($child->field_child_reference->field_child_birthday->value());
     $variables['child_favourite_play'] = $child->field_child_reference->field_play_desc->value();
     $variables['child_country'] = $child->field_child_reference->field_child_country->name->value();
+    $continent = '';
+    switch($child->field_child_reference->field_child_country->continent->value()) {
+    	case('AF'):
+		$continent = 'África';
+		break;
+	case('SA'):
+		$continent = 'Sudamérica';
+		break;
+	default:
+		$continent = '';
+		break;
+    }
+    $variables['child_continent'] = $continent;
     $variables['child_gender'] = $child->field_child_reference->field_gender->value() == 'M' ? 'Chico' : 'Chica';
     $variables['child_brothers'] = $child->field_child_reference->field_brothers->value();
     $variables['child_sisters'] = $child->field_child_reference->field_sisters->value();
