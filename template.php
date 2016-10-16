@@ -165,7 +165,7 @@ function gaea_preprocess_node_child(&$variables) {
 
     $variables['child'] = $child;
     $variables['child_name'] = $child->field_child_reference->field_first_name->value();
-    $variables['child_birthday'] = format_date($child->field_child_reference->field_child_birthday->value());
+    $variables['child_birthday'] = format_date($child->field_child_reference->field_child_birthday->value(), 'birthday');
     $variables['child_favourite_play'] = $child->field_child_reference->field_play_desc->value();
     $variables['child_country'] = $child->field_child_reference->field_child_country->name->value();
     $continent = '';
