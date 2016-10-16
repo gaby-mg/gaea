@@ -63,17 +63,14 @@ blockquote {
   font-style: italic;
   quotes: "«" "»";
 
-  &:before,
-  &:after {
+  p:first-child:before {
+    content: open-quote;
     color: @brand-primary;
   }
 
-  &:before {
-    content: open-quote;
-  }
-
-  &:after {
+  p:last-child:after {
     content: close-quote;
+    color: @brand-primary;
   }
 }
 
