@@ -189,6 +189,6 @@ function gaea_preprocess_node_child(&$variables) {
     $variables['child_gender'] = $child->field_child_reference->field_gender->value() == 'M' ? 'Chico' : 'Chica';
     $variables['child_brothers'] = $child->field_child_reference->field_brothers->value();
     $variables['child_sisters'] = $child->field_child_reference->field_sisters->value();
-
+    $variables['product_id'] = $child->field_child_reference->product_id->value();
     $variables['child_age'] = $age;
 }
