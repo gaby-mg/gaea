@@ -221,7 +221,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <p class="ẗext-center"><a href="/tu-apadrinamiento/<?= $product_id ?>" class="btn btn-primary btn-large">Apadrina a <?= $child_name ?> ahora</a></p>
+            <p class="text-center"><a href="/tu-apadrinamiento/<?= $product_id ?>" class="btn btn-primary btn-large">Apadrina a <?= $child_name ?> ahora</a></p>
         </div>
     </div>
 
