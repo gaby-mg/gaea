@@ -184,6 +184,11 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
+            <p class="text-center"><a href="/tu-apadrinamiento/<?= $product_id ?>" class="btn btn-primary btn-large">Apadrina a <?= $child_name ?> ahora</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
             <div class="video-container">
                 <div class="arrow-down hidden-xs"></div>
                 <div class="embed-responsive embed-responsive-4by3">
@@ -211,7 +216,12 @@
 
             <h2>Vivo en <?= $child_country; ?></h2>
 
-	    <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de <?= $child_continent ?>. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
+	        <p class="lead text-center">Vivo junto a  mi familia en una comunidad de <?= $child_country ?> uno de los países más pobres de <?= $child_continent ?>. Aquí la falta de agua potable provoca que los niños tengamos graves enfermedades diarreicas y respiratorias.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="ẗext-center"><a href="/tu-apadrinamiento/<?= $product_id ?>" class="btn btn-primary btn-large">Apadrina a <?= $child_name ?> ahora</a></p>
         </div>
     </div>
 
