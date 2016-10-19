@@ -212,7 +212,7 @@
     <!-- This Is My World -->
     <div class="row">
         <div class="col-xs-12">
-            <div class="clock">2:06<span>pm</span></div>
+            <!-- <div class="clock">2:06<span>pm</span></div> -->
 
             <h2>Vivo en <?= $child_country; ?></h2>
 
