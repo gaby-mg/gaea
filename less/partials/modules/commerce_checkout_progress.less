@@ -1,0 +1,49 @@
+ol.inline.commerce-checkout-progress {
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    width: 206px;
+    text-transform: uppercase;
+    background-color: @gray-lighter;
+    height: 50px;
+    padding: 13px 15px 0 0;
+    text-align: right;
+    position: relative;
+
+    &:before,
+    &:after {
+      width: 0;
+      height: 0;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -86px;
+      border: 25px solid;
+      border-width: 25px 43px;
+      border-color: transparent transparent transparent @gray-lighter;
+    }
+
+    &:before {
+      border-width: 25px 42px;
+      border-color: transparent transparent transparent #fff;
+    }
+
+    &:first-child {
+      text-align: center;
+    }
+
+    &.active {
+      background-color: @brand-primary;
+      color: #fff;
+      z-index: 3;
+
+      &:after {
+        border-color: transparent transparent transparent @brand-primary;
+      }
+    }
+  }
+}
