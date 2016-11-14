@@ -22,6 +22,22 @@
   }
 }
 
+#edit-cart-contents,
+#edit-customer-profile-billing,
+#edit-customer-profile-wv-adtnl-info,
+#edit-review-your-ecard,
+#edit-rules-pane {
+  legend {
+    display: none;
+  }
+}
+
+#edit-cancel,
+#edit-back {
+  float: right;
+}
+
+
 .node-wv-bounceback-display .commerce-add-to-cart {
   max-width: unset;
 
@@ -63,6 +79,10 @@
   background-color: @gray-lighter;
 }
 
+.checkout-help {
+  display: none;
+}
+
 .views-field-commerce-order-total {
   text-transform: uppercase;
   font-size: 1.25em;
@@ -70,5 +90,39 @@
   .field-content {
     display: inline-block;
     color: @brand-primary;
+  }
+}
+
+
+#edit-checkout-donate {
+  border: unset;
+
+  #edit-checkout-donate-commerce-donate-amount-und-select {
+    .form-item-checkout-donate-commerce-donate-amount-und-select:first-child {
+      display: none;
+    }
+  }
+
+  .form-item.form-item-checkout-donate-commerce-donate-amount-und.form-type-select-or-other.form-group {
+    display: table;
+    width: 100%;
+
+    & > .select-or-other.select-or-other-processed {
+      display: table-footer-group;
+
+      & > div {
+        padding-left: 20px;
+        margin-top: 20px;
+      }
+    }
+
+    & > .help-block {
+      display: table-header-group;
+      font-size: 1em;
+    }
+  }
+
+  .form-type-radios > .control-label {
+    display: none;
   }
 }
