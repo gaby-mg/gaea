@@ -9,7 +9,7 @@
  */
 function gaea_link($variables) {
     if($variables['text'] == 'My account') {
-        $variables['text'] = 'Hello, ' . $GLOBALS['user']->name;
+        $variables['text'] = 'Hola, ' . $GLOBALS['user']->name;
     }
 
     return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
