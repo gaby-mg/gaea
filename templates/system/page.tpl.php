@@ -205,7 +205,7 @@
   <?php endif; ?>
 
   <?php if (!empty($page['footer_text'])): ?>
-  <div class="row">
+  <div class="row" id="footer-text">
     <div class="col-xs-12">
       <?php print render($page['footer_text']); ?>
     </div>
