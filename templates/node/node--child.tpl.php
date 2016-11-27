@@ -119,21 +119,7 @@
 </article>
 <?php else: ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
-        <header>
-            <?php print render($title_prefix); ?>
-            <?php if (!$page && !empty($title)): ?>
-                <h2<?php print $title_attributes; ?>>Apadrina un niño ahora y cambia su vida para siempre</h2>
-            <?php endif; ?>
-            <?php print render($title_suffix); ?>
-            <?php if ($display_submitted): ?>
-                <span class="submitted">
-      <?php print $user_picture; ?>
-      <?php print $submitted; ?>
-    </span>
-            <?php endif; ?>
-        </header>
-    <?php endif; ?>
+    
     <div class="row">
         <div class="col-sm-4">
             <div class="child-thumbnail">
