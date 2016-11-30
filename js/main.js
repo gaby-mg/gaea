@@ -1,7 +1,7 @@
 (function ($) {
     Drupal.behaviors.Gaea = {
         attach: function (context, settings) {
-		$('.nav-tabs').stickyTabs();
+            $('.nav-tabs').stickyTabs();
         }
     };
 })(jQuery);
