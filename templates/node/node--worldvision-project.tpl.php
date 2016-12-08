@@ -79,126 +79,27 @@
  * @ingroup templates
  */
 ?>
-<?php if($teaser): ?>
-    <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-        <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
-            <header>
-                <?php print render($title_prefix); ?>
-                <?php if (!$page && !empty($title)): ?>
-                    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-                <?php endif; ?>
-                <?php print render($title_suffix); ?>
-                <?php if ($display_submitted): ?>
-                    <span class="submitted">
-      <?php print $user_picture; ?>
-      <?php print $submitted; ?>
-    </span>
-                <?php endif; ?>
-            </header>
-        <?php endif; ?>
-        <?php
-        // Hide comments, tags, and links now so that we can render them later.
-        hide($content['comments']);
-        hide($content['links']);
-        hide($content['field_tags']);
-        print render($content);
-        ?>
-        <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
-            <footer>
-                <?php print render($content['field_tags']); ?>
-                <?php print render($content['links']); ?>
-            </footer>
-        <?php endif; ?>
-        <?php print render($content['comments']); ?>
-    </article>
-<?php else: ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
-  <header>
-      <?php print render($title_prefix); ?>
-    <?php if (!$page && !empty($title)): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
-    <?php print render($title_suffix); ?>
-    <?php if ($display_submitted): ?>
-    <span class="submitted">
-      <?php print $user_picture; ?>
-      <?php print $submitted; ?>
-    </span>
-    <?php endif; ?>
-  </header>
-  <?php endif; ?>
     <div class="row">
         <div class="col-xs-12">
-            <div class="featured-image">
-                <?php print render($content['field_featured_image']); ?>
-            </div>
+            <h2>Contexto</h2>
+
+            <?php foreach($project->field_country_context as $country_context_item) : ?>
+                <div class="col-md-6">
+                    <div class="well">
+                        <img src="<?= file_create_url($country_context_item->field_country_context_icon->value()['uri']); ?>" alt="" width="32" height="32">
+                        <?= $country_context_item->field_country_context_text->value(); ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Contexto</h2>
+        <div class="col-xs-12">
+            <h2>Cómo vive un niño en <?php print $title; ?>?</h2>
 
-                    <?php foreach($project->field_country_context as $country_context_item) : ?>
-                        <div class="col-md-6">
-                            <div class="well">
-                                <img src="<?= file_create_url($country_context_item->field_country_context_icon->value()['uri']); ?>" alt="" width="32" height="32">
-                                <?= $country_context_item->field_country_context_text->value(); ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Cómo vive un niño en <?php print $title; ?>?</h2>
-
-                    <?php print render($content['field_child_day']); ?>
-                </div>
-
-            </div>
-        </div><!-- .col-md-9 -->
-        <div class="col-md-3">
-            <aside class="infobox hidden-xs">
-                <table class="table">
-                    <tr>
-                        <td style='width: 50%; vertical-align: middle;'><?php print render($content['field_country_flag']); ?></td>
-                        <td><?php print render($content['field_coat_of_arms']); ?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><?php print render($content['field_country_location']); ?></td>
-                    </tr>
-                    <tr>
-                        <td class="field-label">Capital</td>
-                        <td class="field-value"><?= $capital; ?></td>
-                    </tr>
-                    <tr>
-                        <td class="field-label">Población</td>
-                        <td class="field-value"><?= $population; ?> habitantes</td>
-                    </tr>
-                    <tr>
-                        <td class="field-label">Esperanza de vida</td>
-                        <td class="field-value"><?= $life_expectancy; ?> años</td>
-                    </tr>
-                    <tr>
-                        <td class="field-label">Tasa de mortalidad infantil</td>
-                        <td class="field-value"><?php print render($child_mortality_rate); ?> %</td>
-                    </tr>
-                    <?php if( !empty($hiv_rate) ): ?>
-                    <tr>
-                        <td class="field-label">Tasa VIH</td>
-                        <td class="field-value"><?php print render($hiv_rate); ?> %</td>
-                    </tr>
-                    <?php endif; ?>
-                    <tr>
-                        <td class="field-label"><abbr title="Índice de desarrollo humano">IDH</abbr></td>
-                        <td class="field-value"><?php print render($human_development_index); ?></td>
-                    </tr>
-                </table>
-            </aside>
+            <?php print render($content['field_child_day']); ?>
         </div>
     </div>
 
@@ -209,4 +110,3 @@
   </footer>
   <?php endif; ?>
 </article>
-<?php endif; ?>
