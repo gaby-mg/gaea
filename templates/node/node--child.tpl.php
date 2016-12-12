@@ -123,7 +123,9 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="child-thumbnail">
+                <?php print render($content['flippy_pager']); ?>
                 <img class="img-circle" src="<?= file_create_url($child->field_profile_picture->value()['uri']); ?>" alt="">
+                <?php print render($content['flippy_pager']); ?>
             </div>
         </div>
         <div class="col-sm-8">
