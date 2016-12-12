@@ -5,6 +5,45 @@
     display: none;
   }
 
+  .prev,
+  .next,
+  .pager-current {
+    display: none;
+  }
+
+  .child-thumbnail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .flippy {
+      .random a {
+        color: white;
+      }
+
+      .random a::before {
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        color: @brand-primary;
+        font-size: 2em;
+      }
+    }
+
+    .flippy:first-child {
+      .random a::before {
+        content: "\e257";
+      }
+    }
+
+    .flippy:last-child {
+      .random a::before {
+        content: "\e258";
+      }
+    }
+  }
+
   .main-container {
     h2 {
       text-align: center;
