@@ -177,15 +177,9 @@ function gaea_preprocess_node_child(&$variables) {
 
     $variables['child'] = $child;
     $variables['child_name'] = $child->field_child_reference->field_first_name->value();
-    $variables['child_birthday'] = format_date($child->field_child_reference->field_child_birthday->value());
-    $birthday = explode("/", $variables['child_birthday']);
-    $age = (date("md", date("U", mktime(0, 0, 0, $birthday[0], $birthday[1], $birthday[2]))) > date("md")
-        ? ((date("Y") - $birthday[2]) - 1)
-        : (date("Y") - $birthday[2]));
     $variables['child_birthday'] = format_date($child->field_child_reference->field_child_birthday->value(), 'birthday');
     $variables['child_favourite_play'] = $child->field_child_reference->field_play_desc->value();
     $variables['child_country'] = $child->field_child_reference->field_child_country->name->value();
-    $continent = '';
     switch($child->field_child_reference->field_child_country->continent->value()) {
     	case('AF'):
 		$continent = 'África';
@@ -202,5 +196,11 @@ function gaea_preprocess_node_child(&$variables) {
     $variables['child_brothers'] = $child->field_child_reference->field_brothers->value();
     $variables['child_sisters'] = $child->field_child_reference->field_sisters->value();
     $variables['product_id'] = $child->field_child_reference->product_id->value();
-    $variables['child_age'] = $age;
+    $variables['child_age'] = $child->field_child_reference->field_wv_child_age->value();
+}
+
+function gaea_views_pre_render(&$view) {
+    if($view->name == 'wv_child_slider' && $view->current_display == 'page_1') {
+        //dpm($view, 'complete view');
+    }
 }
