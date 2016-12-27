@@ -29,6 +29,29 @@
     padding: @padding-large-vertical @padding-large-horizontal;
   }
 
+  .field-name-field-wv-resol-min {
+    text-align: center;
+
+    .field-items {
+      display: inline-block;
+      height: 60px;
+      width: 60px;
+      border: 1px solid @brand-primary;
+      border-radius: 50%;
+      line-height: 60px;
+      margin-top: 20px;
+
+      .field-item::before {
+        content: "+";
+      }
+    }
+  }
+
+  .commerce-add-to-cart {
+    background-color: white;
+    max-width: 80%;
+  }
+
   .field-name-field-wv-resol-user-benefit,
   .field-name-field-wv-resol-wv-benefit {
     text-transform: uppercase;
@@ -63,7 +86,18 @@
     display: none;
   }
 
+  .field-name-field-wv-resolsegicon {
+    text-align: center;
+    font-size: 1.5em;
+    color: @brand-primary;
+  }
+
   .panel-col-bottom .horizontal-tabs-panes fieldset:first-child .panel-body {
     display: flex;
   }
+
+  .panel-2col-stacked:nth-child(even) .panel-col-bottom .horizontal-tabs-panes fieldset:first-child .panel-body .field-name-field-wv-resol-summary {
+    order: 2;
+  }
+
 }
