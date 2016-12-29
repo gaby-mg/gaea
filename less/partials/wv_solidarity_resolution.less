@@ -4,6 +4,12 @@
     font-size: 1em;
   }
 
+  .nav.nav-pills {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
   .lead {
     margin-bottom: 40px;
   }
@@ -30,7 +36,18 @@
   }
 
   .field-name-field-wv-resol-desc {
-    padding: @padding-large-vertical @padding-large-horizontal;
+    flex-basis: 100%;
+
+    .field-items {
+      background-color: rgba(0,0,0,.6);
+
+      .field-item {
+        padding: @padding-large-vertical @padding-base-horizontal;
+        color: white;
+        max-width: 33em;
+        margin: 0 auto;
+      }
+    }
   }
 
   .field-name-field-wv-resol-min {
