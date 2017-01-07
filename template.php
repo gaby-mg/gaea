@@ -4,6 +4,7 @@
  * The primary PHP file for this theme.
  */
 
+
 /**
  * Overrides theme_link().
  */
@@ -61,6 +62,45 @@ function gaea_menu_link(array $variables) {
  */
 function bootstrap_menu_tree__wv_main_menu(&$variables) {
     return '<ul class="menu nav navbar-nav">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Gaea theme wrapper function for the main menu links.
+ */
+function gaea_menu_tree__menu_wv_private_area(&$variables) {
+    return '<ul class="menu nav nav-tabs">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Overrides theme_menu_link().
+ */
+function gaea_menu_link__menu_wv_private_area($variables) {
+    $element = $variables['element'];
+    $sub_menu = '';
+
+    if ($element['#below']) {
+        $sub_menu = drupal_render($element['#below']);
+    }
+
+    $image = file_load($element['#localized_options']['content']['image']);
+    dpm($image);
+    $image_markup = theme_image_style(array(
+            'style_name' => 'bootstrap_circle_image',
+            'path' => $image->uri,
+            'width' => $image->image_dimensions['width'],
+            'height' => $image->image_dimensions['height'],
+            'attributes' => array(
+                'class' => 'img-circle'
+            ),
+        )
+    );
+
+    $options = $element['#localized_options'];
+    $options['html'] = true;
+
+    $output = l($image_markup.$element['#title'], $element['#href'], $options);
+
+    return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
 /**
@@ -155,7 +195,6 @@ function gaea_preprocess_node(&$variables) {
  */
 function gaea_preprocess_node_worldvision_project(&$variables) {
     $node = $variables['node'];
-
     $project = entity_metadata_wrapper('node', $node);
 
     $variables['project'] = $project;
@@ -172,7 +211,6 @@ function gaea_preprocess_node_worldvision_project(&$variables) {
  */
 function gaea_preprocess_node_child(&$variables) {
     $node = $variables['node'];
-
     $child = entity_metadata_wrapper('node', $node);
 
     $variables['child'] = $child;
