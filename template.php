@@ -83,7 +83,6 @@ function gaea_menu_link__menu_wv_private_area($variables) {
     }
 
     $image = file_load($element['#localized_options']['content']['image']);
-    dpm($image);
     $image_markup = theme_image_style(array(
             'style_name' => 'bootstrap_circle_image',
             'path' => $image->uri,
