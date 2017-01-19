@@ -241,3 +241,29 @@ function gaea_views_pre_render(&$view) {
         //dpm($view, 'complete view');
     }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gaea_form_commerce_checkout_form_alter(&$form, &$form_state) {
+    // If this checkout form contains the payment method radios...
+    if (!empty($form['commerce_payment']['payment_method']['#options'])) {
+        // Loop over its options array looking for a PayPal WPS option.
+        foreach ($form['commerce_payment']['payment_method']['#options'] as $key => &$value) {
+            list($method_id, $rule_name) = explode('|', $key);
+
+            // If we find PayPal WPS...
+            if ($method_id == 'paypal_wps') {
+                // Prepare the replacement radio button text with icons.
+                $icons = commerce_paypal_icons();
+                $value = t('PayPal - pay securely without sharing your financial information', array('!logo' => $icons['paypal']));
+                $value .= '<div class="commerce-paypal-icons"><span class="label">' . t('Includes:') . '</span>' . implode(' ', $icons) . '</div>';
+
+                // Add the CSS.
+                $form['commerce_payment']['payment_method']['#attached']['css'][] = drupal_get_path('module', 'commerce_paypal_wps') . '/theme/commerce_paypal_wps.theme.css';
+
+                break;
+            }
+        }
+    }
+}
