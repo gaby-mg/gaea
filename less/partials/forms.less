@@ -115,13 +115,26 @@
   display: flex;
 }
 
-.commerce-paypal-icons {
+.commerce-paypal-icons,
+.commerce-sermepa-icons {
   display: flex;
-  flex-direction: row-reverse;
   margin: -3px 0px 0px 20px;
   float: right;
 }
 
+.commerce-paypal-icons {
+  flex-direction: row-reverse;
+  img { display: none; }
+  img:last-child { display: inline; }
+}
+
+.commerce-sermepa-icons {
+  img:last-child,
+  img:nth-child(5),
+  img:nth-child(6) {
+    display: none;
+  }
+}
 
 #edit-checkout-donate {
   border: unset;

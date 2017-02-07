@@ -262,7 +262,17 @@ function gaea_form_commerce_checkout_form_alter(&$form, &$form_state) {
                 // Add the CSS.
                 $form['commerce_payment']['payment_method']['#attached']['css'][] = drupal_get_path('module', 'commerce_paypal_wps') . '/theme/commerce_paypal_wps.theme.css';
 
-                break;
+            }
+
+            // If we find Sermepa...
+            if ($method_id == 'commerce_sermepa') {
+                // Prepare the replacement radio button text with icons.
+                $icons = commerce_paypal_icons();
+                $value .= '<div class="commerce-sermepa-icons"><span class="label">' . t('Includes:') . '</span>' . implode(' ', $icons) . '</div>';
+
+                // Add the CSS.
+                $form['commerce_payment']['payment_method']['#attached']['css'][] = drupal_get_path('module', 'commerce_paypal_wps') . '/theme/commerce_paypal_wps.theme.css';
+
             }
         }
     }
