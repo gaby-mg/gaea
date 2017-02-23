@@ -35,13 +35,17 @@
   }
 }
 
-.page-porunainfanciasinviolencia .commerce-add-to-cart {
-  padding-left: 450px;
-  max-width: 800px;
-  background: url("/sites/all/themes/gaea/img/ParaColabora.jpg") no-repeat;
-  background-size: auto 220px;
-  background-color: @gray-lighter;
-  padding-bottom: 0;
+.page-porunainfanciasinviolencia {
+  @media (min-width: @grid-float-breakpoint-max) {
+    .commerce-add-to-cart {
+      padding-left: 450px;
+      max-width: 800px;
+      background: url("/sites/all/themes/gaea/img/ParaColabora.jpg") no-repeat;
+      background-size: auto 220px;
+      background-color: @gray-lighter;
+      padding-bottom: 0;
+    }
+  }
 }
 
 #edit-cart-contents,
