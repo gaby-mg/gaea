@@ -180,6 +180,7 @@
             <div class="video-container">
                 <div class="arrow-down hidden-xs"></div>
                 <div class="embed-responsive embed-responsive-4by3">
+                    <?php if(! empty($child->field_greetings_video->value())): ?>
                     <video class="embed-responsive-item" controls>
                         <source src="<?= file_create_url($child->field_greetings_video->value()['uri']); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
                         <source src="__VIDEO__.OGV" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
@@ -189,10 +190,15 @@
                             <param name="movie" value="__FLASH__.SWF" />
                             <param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
                             <!-- fallback image. note the title field below, put the title of the video there -->
-                            <img src="__VIDEO__.JPG" width="640" height="360" alt="__TITLE__"
+                            <img src="/sites/all/themes/gaea/node__child/america.JPG" width="640" height="360" alt="__TITLE__"
                                  title="No video playback capabilities, please download the video below" />
                         </object>
                     </video>
+                    <?php elseif($child_country == "Guatemala" || $child_country == "Bolivia"): ?>
+                    <img class="img-responsive" src="/sites/all/themes/gaea/img/node__child/america.JPG" alt="">
+                        <?php elseif($child_country == "Zimbabwe" || $child_country == "Ghana" || $child_country == "Mali"): ?>
+                        <img class="img-responsive" src="/sites/all/themes/gaea/img/node__child/africa.jpg" alt="">
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
